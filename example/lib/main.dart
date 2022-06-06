@@ -42,7 +42,7 @@ class _MyHomePageState extends State<MyHomePage> {
       file = await openFile(acceptedTypeGroups: [typeGroup]);
     } else {
       final picker = ImagePicker();
-      PickedFile? pickedFile = await picker.getVideo(source: ImageSource.gallery);
+      XFile? pickedFile = await picker.pickVideo(source: ImageSource.gallery);
       file = File(pickedFile!.path);
     }
     if (file == null) {
@@ -56,7 +56,7 @@ class _MyHomePageState extends State<MyHomePage> {
       includeAudio: true,
     );
     print(info!.path);
-    if (info != null) {
+    if (info.path != null) {
       setState(() {
         _counter = info.path!;
       });
